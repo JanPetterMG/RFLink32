@@ -3,7 +3,7 @@ name: uv
 on:
   pull_request:
     branches:
-      - main
+      - master
 
   workflow_dispatch:
 
