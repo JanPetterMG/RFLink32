@@ -54,24 +54,19 @@ jobs:
           key: platformio-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('platformio.ini') }}
           path: .platformio/.cache
 
-      - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
-        with:
-          python-version: 3.11
-          cache: pip
-
       - name: Set up uv
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           version-file: pyproject.toml
           python-version: 3.11
-          activate-environment: true
 
       - name: Set up PlatformIO
-        run: uv sync --no-dev
+        run: |
+          uv venv --seed
+          uv sync --no-dev
 
       - name: PlatformIO build
-        run: pio run -e ${{ matrix.environment }}
+        run: uv run pio run -e ${{ matrix.environment }}
 
   lint:
     name: Lint
