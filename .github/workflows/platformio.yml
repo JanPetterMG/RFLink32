@@ -1,4 +1,4 @@
-name: Build
+name: PlatformIO
 
 on:
   pull_request:
