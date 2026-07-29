@@ -62,7 +62,9 @@ jobs:
           activate-environment: true
 
       - name: Set up PlatformIO
-        run: uv sync --no-dev
+        run: |
+          uv venv --seed
+          uv sync --no-dev
 
       - name: PlatformIO build
         run: pio run -e ${{ matrix.environment }}
