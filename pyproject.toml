@@ -1,0 +1,12 @@
+[project]
+name = "rflink32"
+version = "5.2.0"
+readme = { file = "README.md", content-type = "text/markdown" }
+classifiers = ["Private :: Do Not Upload"]
+requires-python = ">=3.11"
+dependencies = [
+    "platformio==6.1.19",
+]
+
+[dependency-groups]
+dev = ["uv==0.12.0"]
